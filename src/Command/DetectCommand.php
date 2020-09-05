@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Console\Command;
+namespace Migrify\StaticDetector\Command;
 
 use Migrify\StaticDetector\Collector\StaticNodeCollector;
 use Migrify\StaticDetector\Output\StaticReportReporter;
@@ -77,10 +77,9 @@ final class DetectCommand extends Command
         $this->finderSanitizer = $finderSanitizer;
         $this->staticScanner = $staticScanner;
         $this->staticNodeCollector = $staticNodeCollector;
+        $this->staticReportReporter = $staticReportReporter;
 
         parent::__construct();
-
-        $this->staticReportReporter = $staticReportReporter;
     }
 
     protected function configure(): void
