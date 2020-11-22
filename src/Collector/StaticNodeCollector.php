@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Collector;
+namespace Symplify\StaticDetector\Collector;
 
-use Migrify\MigrifyKernel\Exception\ShouldNotHappenException;
-use Migrify\StaticDetector\ValueObject\StaticClassMethod;
-use Migrify\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
-use Migrify\StaticDetector\ValueObject\StaticReport;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\ClassMethod;
+use Symplify\StaticDetector\ValueObject\StaticClassMethod;
+use Symplify\StaticDetector\ValueObject\StaticClassMethodWithStaticCalls;
+use Symplify\StaticDetector\ValueObject\StaticReport;
+use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
 final class StaticNodeCollector
 {

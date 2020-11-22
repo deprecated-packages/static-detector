@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\NodeTraverser;
+namespace Symplify\StaticDetector\NodeTraverser;
 
-use Migrify\StaticDetector\NodeVisitor\FilePathNodeVisitor;
-use Migrify\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
 use PhpParser\NodeVisitor\NameResolver;
+use Symplify\StaticDetector\NodeVisitor\FilePathNodeVisitor;
+use Symplify\StaticDetector\NodeVisitor\StaticCollectNodeVisitor;
 
 final class StaticCollectNodeTraverserFactory
 {

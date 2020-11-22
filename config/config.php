@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-use Migrify\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
-use Migrify\StaticDetector\NodeTraverser\StaticCollectNodeTraverserFactory;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\Finder\Finder;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Symplify\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
+use Symplify\StaticDetector\NodeTraverser\StaticCollectNodeTraverserFactory;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -19,13 +18,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Migrify\StaticDetector\\', __DIR__ . '/../src')
+    $services->load('Symplify\StaticDetector\\', __DIR__ . '/../src')
         ->exclude([__DIR__ . '/../src/ValueObject', __DIR__ . '/../src/HttpKernel/StaticDetectorKernel.php']);
 
     $services->set(StaticCollectNodeTraverser::class)
         ->factory([ref(StaticCollectNodeTraverserFactory::class), 'create']);
-
-    $services->set(Finder::class);
 
     $services->set(ParserFactory::class);
     $services->set(Parser::class)

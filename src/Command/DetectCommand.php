@@ -2,36 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Command;
+namespace Symplify\StaticDetector\Command;
 
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
-use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\StaticDetector\Collector\StaticNodeCollector;
-use Migrify\StaticDetector\Output\StaticReportReporter;
-use Migrify\StaticDetector\StaticScanner;
-use Migrify\StaticDetector\ValueObject\Option;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\StaticDetector\Output\StaticReportReporter;
+use Symplify\StaticDetector\StaticScanner;
+use Symplify\StaticDetector\ValueObject\Option;
 
-final class DetectCommand extends AbstractMigrifyCommand
+final class DetectCommand extends AbstractSymplifyCommand
 {
-    /**
-     * @var Finder
-     */
-    private $finder;
-
-    /**
-     * @var FinderSanitizer
-     */
-    private $finderSanitizer;
-
     /**
      * @var StaticScanner
      */
@@ -53,15 +38,11 @@ final class DetectCommand extends AbstractMigrifyCommand
     private $parameterProvider;
 
     public function __construct(
-        Finder $finder,
-        FinderSanitizer $finderSanitizer,
         StaticScanner $staticScanner,
         StaticNodeCollector $staticNodeCollector,
         StaticReportReporter $staticReportReporter,
         ParameterProvider $parameterProvider
     ) {
-        $this->finder = $finder;
-        $this->finderSanitizer = $finderSanitizer;
         $this->staticScanner = $staticScanner;
         $this->staticNodeCollector = $staticNodeCollector;
         $this->staticReportReporter = $staticReportReporter;
@@ -73,7 +54,7 @@ final class DetectCommand extends AbstractMigrifyCommand
     protected function configure(): void
     {
         $this->addArgument(
-            MigrifyOption::SOURCES,
+            Option::SOURCES,
             InputArgument::REQUIRED | InputArgument::IS_ARRAY,
             'One or more directories to detect static in'
         );
@@ -82,8 +63,8 @@ final class DetectCommand extends AbstractMigrifyCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $source = $this->resolveSource($input);
-        $fileInfos = $this->findPhpFilesInDirectories($source);
+        $sources = (array) $input->getOption(Option::SOURCES);
+        $fileInfos = $this->smartFinder->find($sources, '*.php');
 
         $filterClasses = (array) $this->parameterProvider->provideParameter(Option::FILTER_CLASSES);
         foreach ($filterClasses as $filterClass) {
@@ -100,34 +81,5 @@ final class DetectCommand extends AbstractMigrifyCommand
         $this->staticReportReporter->reportTotalNumbers($staticReport);
 
         return ShellCode::SUCCESS;
-    }
-
-    /**
-     * @return SmartFileInfo[]
-     */
-    private function findPhpFilesInDirectories(array $directories): array
-    {
-        $finder = $this->finder->files()
-            ->in($directories)
-            ->name('*.php');
-
-        return $this->finderSanitizer->sanitize($finder);
-    }
-
-    /**
-     * @return string[]
-     */
-    private function resolveSource(InputInterface $input): array
-    {
-        $source = (array) $input->getArgument(MigrifyOption::SOURCES);
-
-        foreach ($source as $singleSource) {
-            if (! $this->smartFileSystem->exists($singleSource)) {
-                $message = sprintf('Path "%s" was not found', $singleSource);
-                throw new FileNotFoundException($message);
-            }
-        }
-
-        return $source;
     }
 }

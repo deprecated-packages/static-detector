@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector;
+namespace Symplify\StaticDetector;
 
-use Migrify\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
-use Migrify\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
 use PhpParser\Parser;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
+use Symplify\StaticDetector\NodeTraverser\StaticCollectNodeTraverser;
 
 /**
- * @see \Migrify\StaticDetector\Tests\StaticScanner\StaticScannerTest
+ * @see \Symplify\StaticDetector\Tests\StaticScanner\StaticScannerTest
  */
 final class StaticScanner
 {

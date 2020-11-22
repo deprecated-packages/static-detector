@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Tests\StaticScanner;
+namespace Symplify\StaticDetector\Tests\StaticScanner;
 
 use Iterator;
-use Migrify\StaticDetector\Collector\StaticNodeCollector;
-use Migrify\StaticDetector\HttpKernel\StaticDetectorKernel;
-use Migrify\StaticDetector\StaticScanner;
-use Migrify\StaticDetector\ValueObject\StaticReport;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\StaticDetector\HttpKernel\StaticDetectorKernel;
+use Symplify\StaticDetector\StaticScanner;
+use Symplify\StaticDetector\ValueObject\StaticReport;
 
 final class StaticScannerTest extends AbstractKernelTestCase
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Tests\Strings;
+namespace Symplify\StaticDetector\Tests\Strings;
 
 use Iterator;
-use Migrify\StaticDetector\HttpKernel\StaticDetectorKernel;
-use Migrify\StaticDetector\Strings\StringsFilter;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Symplify\StaticDetector\HttpKernel\StaticDetectorKernel;
+use Symplify\StaticDetector\Strings\StringsFilter;
 
 final class StringsFilterTest extends AbstractKernelTestCase
 {

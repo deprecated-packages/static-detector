@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\ValueObject;
+namespace Symplify\StaticDetector\ValueObject;
 
 final class StaticDetectorAttributeKey
 {

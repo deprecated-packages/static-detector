@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\NodeVisitor;
+namespace Symplify\StaticDetector\NodeVisitor;
 
-use Migrify\MigrifyKernel\Exception\ShouldNotHappenException;
-use Migrify\StaticDetector\Collector\StaticNodeCollector;
-use Migrify\StaticDetector\Strings\StringsFilter;
-use Migrify\StaticDetector\ValueObject\Option;
 use PhpParser\Node;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeVisitorAbstract;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Symplify\StaticDetector\Collector\StaticNodeCollector;
+use Symplify\StaticDetector\Strings\StringsFilter;
+use Symplify\StaticDetector\ValueObject\Option;
+use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
 final class StaticCollectNodeVisitor extends NodeVisitorAbstract
 {

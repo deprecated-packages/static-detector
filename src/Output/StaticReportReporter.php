@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Output;
+namespace Symplify\StaticDetector\Output;
 
-use Migrify\StaticDetector\ValueObject\StaticReport;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\StaticDetector\ValueObject\StaticReport;
 
 final class StaticReportReporter
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\HttpKernel;
+namespace Symplify\StaticDetector\HttpKernel;
 
-use Migrify\MigrifyKernel\HttpKernel\AbstractMigrifyKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 
-final class StaticDetectorKernel extends AbstractMigrifyKernel implements ExtraConfigAwareKernelInterface
+final class StaticDetectorKernel extends AbstractSymplifyKernel implements ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]

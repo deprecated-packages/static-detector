@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\CurrentProvider;
+namespace Symplify\StaticDetector\CurrentProvider;
 
 use Symplify\SmartFileSystem\SmartFileInfo;
 

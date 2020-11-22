@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\Strings;
+namespace Symplify\StaticDetector\Strings;
 
 use Nette\Utils\Strings;
 
 /**
- * @see \Migrify\StaticDetector\Tests\Strings\StringsFilterTest
+ * @see \Symplify\StaticDetector\Tests\Strings\StringsFilterTest
  */
 final class StringsFilter
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\NodeVisitor;
+namespace Symplify\StaticDetector\NodeVisitor;
 
-use Migrify\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
-use Migrify\StaticDetector\ValueObject\StaticDetectorAttributeKey;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
+use Symplify\StaticDetector\CurrentProvider\CurrentFileInfoProvider;
+use Symplify\StaticDetector\ValueObject\StaticDetectorAttributeKey;
 
 final class FilePathNodeVisitor extends NodeVisitorAbstract
 {

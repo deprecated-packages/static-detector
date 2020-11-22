@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\StaticDetector\NodeTraverser;
+namespace Symplify\StaticDetector\NodeTraverser;
 
 use PhpParser\NodeTraverser;
 

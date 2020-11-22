@@ -1,13 +1,13 @@
 # Static Detector
 
-[![Downloads total](https://img.shields.io/packagist/dt/migrify/static-detector.svg?style=flat-square)](https://packagist.org/packages/migrify/static-detector/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/symplify/static-detector.svg?style=flat-square)](https://packagist.org/packages/symplify/static-detector/stats)
 
 Detect static and its calls in your project!
 
 ## Install
 
 ```bash
-composer require migrify/static-detector --dev
+composer require symplify/static-detector --dev
 ```
 
 ## Usage
@@ -21,18 +21,12 @@ vendor/bin/static-detector detect src
 Do you want to look only on specific classes? Just create `static-detector.php` config in your root and add filter them:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Migrify\StaticDetector\ValueObject\Option;
+use Symplify\StaticDetector\ValueObject\Option;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::FILTER_CLASSES, [
-        '*\\Helpers'
-    ]);
+    $parameters->set(Option::FILTER_CLASSES, ['*\\Helpers']);
 };
 ```
 
