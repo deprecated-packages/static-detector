@@ -1,5 +1,6 @@
 # Static Detector
 
+
 [![Downloads total](https://img.shields.io/packagist/dt/symplify/static-detector.svg?style=flat-square)](https://packagist.org/packages/symplify/static-detector/stats)
 
 Detect static and its calls in your project!
